@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using JimmysUnityUtilities;
 
 using HeaderCase = LogicUI.FancyTextRendering.MarkdownRenderingSettings.HeaderSettings.HeaderData.HeaderCase;
@@ -9,6 +10,8 @@ namespace LogicUI.FancyTextRendering.MarkdownLogic
 {
     class Headers : MarkdownLineProcessorBase
     {
+        private static Regex _leadingRichTagsRegex = new Regex(@"\w*(?<!#.*)<.*?>(?>#)", RegexOptions.Compiled);
+
         protected override void ProcessInternal(IReadOnlyList<MarkdownLine> lines, MarkdownRenderingSettings settings)
         {
             bool inWakeOfHeader = false; // Used to delete empty lines after headers
@@ -36,18 +39,23 @@ namespace LogicUI.FancyTextRendering.MarkdownLogic
 
                 if (settings.Headers.RenderPoundSignHeaders)
                 {
+                    var offset = 0;
+                    var match = _leadingRichTagsRegex.Match(line.Builder.ToString());
+                    if (match.Success)
+                        offset = match.Index + match.Length - 1;
+
                     int leadingNumberSignsCount = 0;
-                    while (leadingNumberSignsCount < builder.Length && builder[leadingNumberSignsCount] == '#')
+                    while (offset + leadingNumberSignsCount < builder.Length && builder[offset + leadingNumberSignsCount] == '#')
                         leadingNumberSignsCount++;
 
                     // Require a space between the # and the header contents. This is different from most markdown implementations,
                     // but it means you can type #relatable and it will actually be a hashtag and not a big header
-                    if (builder.Length > leadingNumberSignsCount && builder[leadingNumberSignsCount] == ' ')
+                    if (builder.Length > offset + leadingNumberSignsCount && builder[offset + leadingNumberSignsCount] == ' ')
                     {
                         if (CanMakeLineHeader(line, leadingNumberSignsCount))
                         {
-                            builder.Remove(startIndex: 0, length: leadingNumberSignsCount);
-                            MakeLineHeader(line, leadingNumberSignsCount);
+                            builder.Remove(startIndex: offset, length: leadingNumberSignsCount);
+                            MakeLineHeader(line, leadingNumberSignsCount, offset);
                             continue;
                         }
                     }
@@ -84,23 +92,23 @@ namespace LogicUI.FancyTextRendering.MarkdownLogic
                     return true;
                 }
 
-                void MakeLineHeader(MarkdownLine line_, int headerLevel)
+                void MakeLineHeader(MarkdownLine line_, int headerLevel, int offset = 0)
                 {
                     inWakeOfHeader = true;
 
                     var builder_ = line_.Builder;
                     var info = settings.Headers.Levels[headerLevel - 1];
 
-                    builder_.TrimStart(' ');
+                    builder_.Remove(offset, 1);
 
-                    builder_.PrependChain("<size=", info.Size.ToString(), "em>");
+                    builder_.InsertChain(offset, "<size=", info.Size.ToString(), "em>");
                     builder_.Append("</size>");
 
                     if (info.Bold)
-                        builder_.Prepend("<b>").Append("</b>");
+                        builder_.Insert(offset, "<b>").Append("</b>");
 
                     if (info.Underline)
-                        builder_.Prepend("<u>").Append("</u>");
+                        builder_.Insert(offset, "<u>").Append("</u>");
 
                     switch (info.Case)
                     {
