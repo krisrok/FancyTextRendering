@@ -1,6 +1,10 @@
 ﻿using JimmysUnityUtilities;
-using NaughtyAttributes;
 using UnityEngine;
+#if ODIN_INSPECTOR_3
+using Sirenix.OdinInspector;
+#else
+using NaughtyAttributes;
+#endif
 
 namespace LogicUI.FancyTextRendering
 {

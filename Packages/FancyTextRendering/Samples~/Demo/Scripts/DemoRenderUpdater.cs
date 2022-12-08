@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using LogicUI.FancyTextRendering;
+#if ODIN_INSPECTOR_3
+using Sirenix.OdinInspector;
+#else
 using NaughtyAttributes;
+#endif
 
 namespace FancyTextRendering.Demo
 {
