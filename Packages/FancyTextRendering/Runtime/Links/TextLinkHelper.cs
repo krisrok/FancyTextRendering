@@ -33,16 +33,20 @@ namespace LogicUI.FancyTextRendering
         {
             previouslyHoveredLinkIndex = -1;
 
-            // I'm not sure why the frame delay is necessary, but it is.
-            // I suspect that TMP changes the colors in LateUpdate or something
-            CoroutineUtility.RunAfterOneFrame(SetAllLinksToNormalColor);
+            Text.OnPreRenderText += Text_OnPreRenderText;
         }
 
         private void OnDisable()
         {
             HoverEnded();
+
+            Text.OnPreRenderText -= Text_OnPreRenderText;
         }
 
+        private void Text_OnPreRenderText(TMP_TextInfo obj)
+        {
+            SetAllLinksToNormalColor();
+        }
 
         [ColorUsage(showAlpha: false), SerializeField]
         Color32 LinkNormalColor = new Color32(29, 124, 234, 255);
