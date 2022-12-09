@@ -14,7 +14,7 @@ namespace FancyTextRendering.Demo
     public class DemoRenderUpdater : MonoBehaviour
     {
         [SerializeField] TMP_InputField MarkdownSourceInputField;
-        [SerializeField] MarkdownRenderer MarkdownRenderer;
+        [SerializeField] TMP_Text MarkdownRenderer;
 
         private void Start()
         {
@@ -24,7 +24,7 @@ namespace FancyTextRendering.Demo
         [Button]
         private void UpdateRender()
         {
-            MarkdownRenderer.Source = MarkdownSourceInputField.text;
+            MarkdownRenderer.SetText(MarkdownSourceInputField.text);
         }
     }
 }

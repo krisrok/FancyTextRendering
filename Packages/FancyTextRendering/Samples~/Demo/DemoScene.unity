@@ -150,6 +150,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 889606829}
   - {fileID: 1761863886}
@@ -254,6 +255,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -287,6 +289,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1199624365}
   m_Father: {fileID: 1870111350}
@@ -340,8 +343,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860940793}
   m_HandleRect: {fileID: 1860940792}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.8754022
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -412,6 +415,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 890572835}
   m_RootOrder: 0
@@ -485,6 +489,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1248535717}
   m_Father: {fileID: 1446712561}
@@ -527,6 +532,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1736400374}
   m_RootOrder: 0
@@ -548,87 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb87846e43a704469d9be7ef4faa09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Source: '# FancyTextRendering
-
-
-    It''s some code to render markdown & clickable
-    links in Unity. How fun!
-
-
-    ## We got multiple levels of headers
-
-
-    Isn''t
-    that neat.
-
-
-    Anywho, we''ve got all your standard Markdown features. You
-    can make stuff *italic* or **bold**, or even ***both simultaneously***. You can
-    cross out stuff with ~~strikethrough~~ or make it codey with `monospace`.
-
-
-    ###
-    Lists!
-
-
-    Boy oh boy do we have lists!
-
-
-    * Unordered lists that use bullet
-    points!
-
-    * See, it''s another item in the list!
-
-    * Wowee, another one!!!
-
-
-    Ordered
-    lists are also supported :D
-
-
-    1. If you use "1" for every number, the list
-    is auto-numbered, in keeping with standard markdown rules.
-
-    1. This makes
-    it easy to insert an item in the list without having to update the number for
-    every single item in the list.
-
-    1. But if you want to control the numbers
-    manually, that is also supported.
-
-
-    See, like in this list:
-
-
-    69. This
-    is an intentional difference from the markdown spec.
-
-    420. I often see folks
-    get confused by Markdown''s list auto-numbering, and this change should ensure
-    that the feature only applies to folks who know what they''re doing.
-
-
-    ###
-    Links!
-
-
-    HTTP and HTTPS links are automatically detected and added, like
-    so: http://isitwednesday.info/. We also have inline links, [like this](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
-
-
-    ###
-    Superscript!
-
-
-    We got super^script! We got super^(script but it''s long!)
-
-
-    ###
-    Escapes!
-
-
-    You can \*escape* control characters with a backslash. Regular\^script!'
-  RenderSettings:
+  _renderSettings:
     Bold:
       RenderBold: 1
     Italics:
@@ -666,7 +592,7 @@ MonoBehaviour:
         Bold: 1
         Underline: 1
         Case: 0
-        VerticalSpacing: 0.7
+        VerticalSpacing: 0.45
       - Size: 1.7
         Bold: 1
         Underline: 1
@@ -683,7 +609,7 @@ MonoBehaviour:
         Case: 0
         VerticalSpacing: 0
     Superscript:
-      RenderSuperscript: 1
+      RenderSuperscript: 0
       RenderChainSuperscript: 1
 --- !u!114 &411557729
 MonoBehaviour:
@@ -705,35 +631,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<voffset=0.7em><u><b><size=2em>FancyTextRendering</size></b></u></voffset>\r\nIt's
-    some code to render markdown & clickable links in Unity. How fun!\r\n\r\n<voffset=0.3em><u><b><size=1.7em>We
-    got multiple levels of headers</size></b></u></voffset>\r\nIsn't that neat.\r\n\r\nAnywho,
-    we've got all your standard Markdown features. You can make stuff <i>italic</i>
-    or <b>bold</b>, or even <i><b>both simultaneously</b></i>. You can cross out
-    stuff with <s>strikethrough</s> or make it codey with <space=0.3em><font=\"Noto/Noto
-    Mono/NotoMono-Regular\"><mark=#0000003C padding=\"25,25,0,0\">monospace</font></mark><space=0.3em>.\r\n\r\n<b><size=1.5em>Lists!</size></b>\r\nBoy
-    oh boy do we have lists!\r\n<line-height=0.76em></line-height>\n<line-height=0%><width=100><align=right>\u2022</width></align>\n</line-height><indent=120>Unordered
-    lists that use bullet points!</indent>\r\n<line-height=0%><width=100><align=right>\u2022</width></align>\n</line-height><indent=120>See,
-    it's another item in the list!</indent>\r\n<line-height=0%><width=100><align=right>\u2022</width></align>\n</line-height><indent=120>Wowee,
-    another one!!!</indent>\n<line-height=0.76em></line-height>\r\nOrdered lists
-    are also supported :D\r\n<line-height=0.76em></line-height>\n<line-height=0%><width=100><align=right>1.</width></align>\n</line-height><indent=120>If
-    you use \"1\" for every number, the list is auto-numbered, in keeping with standard
-    markdown rules.</indent>\r\n<line-height=0%><width=100><align=right>2.</width></align>\n</line-height><indent=120>This
-    makes it easy to insert an item in the list without having to update the number
-    for every single item in the list.</indent>\r\n<line-height=0%><width=100><align=right>3.</width></align>\n</line-height><indent=120>But
-    if you want to control the numbers manually, that is also supported.</indent>\n<line-height=0.76em></line-height>\r\nSee,
-    like in this list:\r\n<line-height=0.76em></line-height>\n<line-height=0%><width=100><align=right>69.</width></align>\n</line-height><indent=120>This
-    is an intentional difference from the markdown spec.</indent>\r\n<line-height=0%><width=100><align=right>420.</width></align>\n</line-height><indent=120>I
-    often see folks get confused by Markdown's list auto-numbering, and this change
-    should ensure that the feature only applies to folks who know what they're doing.</indent>\n<line-height=0.76em></line-height>\r\n<b><size=1.5em>Links!</size></b>\r\nHTTP
-    and HTTPS links are automatically detected and added, like so: <color=#1D7CEAFF><link=\"http://isitwednesday.info/.\">http://isitwednesday.info/.</link></color>
-    We also have inline links, <color=#1D7CEAFF><link=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">like
-    this</link></color>.\r\n\r\n<b><size=1.5em>Superscript!</size></b>\r\nWe got
-    super<sup>script!</sup> We got super<sup>script but it's long!</sup>\r\n\r\n<b><size=1.5em>Escapes!</size></b>\r\nYou
-    can *escape* control characters with a backslash. Regular^script!\r\n"
+  m_text: '[dopel](popel) [mop](hhj)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
-  m_sharedMaterial: {fileID: 6588039389402685758, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -833,13 +734,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LinkNormalColor:
     serializedVersion: 2
-    rgba: 4293557277
+    rgba: 4279894271
   LinkHoveredColor:
     serializedVersion: 2
-    rgba: 4293366344
+    rgba: 4280349460
   LinkClickColor:
     serializedVersion: 2
-    rgba: 4290669606
+    rgba: 4293798927
 --- !u!114 &411557733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MarkdownSourceInputField: {fileID: 2078099420}
-  MarkdownRenderer: {fileID: 411557728}
+  MarkdownRenderer: {fileID: 411557729}
 --- !u!4 &658889251
 Transform:
   m_ObjectHideFlags: 0
@@ -895,6 +796,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -928,6 +830,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 125469607}
   m_RootOrder: 0
@@ -979,8 +882,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5de1d72870539946acbeda8bed412ec, type: 2}
-  m_sharedMaterial: {fileID: -7809948095054474158, guid: c5de1d72870539946acbeda8bed412ec, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1144,6 +1047,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 237189460}
   - {fileID: 984161510}
@@ -1181,6 +1085,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2035596122}
   - {fileID: 1847077268}
@@ -1218,6 +1123,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1860940792}
   m_Father: {fileID: 188738441}
@@ -1256,6 +1162,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 324587310}
   m_RootOrder: 0
@@ -1332,6 +1239,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 324587310}
   m_Father: {fileID: 2035596122}
@@ -1386,7 +1294,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1248535717}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.93606526
+  m_Size: 0.95490164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1458,6 +1366,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 411557727}
   m_Father: {fileID: 1870111350}
@@ -1547,6 +1456,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 125469607}
   m_RootOrder: 1
@@ -1596,8 +1506,8 @@ MonoBehaviour:
     got super^script! We got super^(script but it's long!)\n\n### Escapes!\n\nYou
     can \\*escape* control characters with a backslash. Regular\\^script!\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5de1d72870539946acbeda8bed412ec, type: 2}
-  m_sharedMaterial: {fileID: -7809948095054474158, guid: c5de1d72870539946acbeda8bed412ec, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1697,6 +1607,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1870111350}
   m_Father: {fileID: 984161510}
@@ -1735,6 +1646,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1199624365}
   m_RootOrder: 0
@@ -1810,6 +1722,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1736400374}
   - {fileID: 188738441}
@@ -1885,6 +1798,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2078099419}
   - {fileID: 1446712561}
@@ -1925,6 +1839,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 125469607}
   m_Father: {fileID: 2035596122}
@@ -2180,6 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2212,6 +2128,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

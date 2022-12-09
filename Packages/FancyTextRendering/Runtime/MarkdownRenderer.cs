@@ -1,24 +1,36 @@
-﻿using TMPro;
+﻿#if ODIN_INSPECTOR_3
+using Sirenix.OdinInspector;
+#else
+using NaughtyAttributes;
+#endif
+using System;
+using TMPro;
 using UnityEngine;
 
 namespace LogicUI.FancyTextRendering
 {
+    [ExecuteAlways]
     [RequireComponent(typeof(TMP_Text))]
-    public class MarkdownRenderer : MonoBehaviour
+    public class MarkdownRenderer : MonoBehaviour, ITextPreprocessor
     {
-        [SerializeField]
-        [TextArea(minLines: 10, maxLines: 50)]
-        string _Source;
-
-        public string Source
+        [ContextMenu("Toggle debug")]
+        private void ToggleDebug()
         {
-            get => _Source;
-            set
-            {
-                _Source = value;
-                RenderText();
-            }
+            _showDebugText = !_showDebugText;
+
+            if (_showDebugText)
+                TextMesh.SetAllDirty();
         }
+
+        private bool _showDebugText;
+
+#if ODIN_INSPECTOR_3
+        [NonSerialized, ShowInInspector] // NaughtyAttributes-compat requires serialized field, so we keep it public and set NonSerialized
+#endif
+        [ShowIf(nameof(_showDebugText))]
+        [EnableIf(nameof(enabled))]
+        [TextArea(minLines: 10, maxLines: 50)]
+        public string DebugText;
 
         TMP_Text _TextMesh;
         public TMP_Text TextMesh
@@ -32,17 +44,32 @@ namespace LogicUI.FancyTextRendering
             }
         }
 
-        private void OnValidate()
+        [SerializeField]
+        private MarkdownRenderingSettings _renderSettings;
+
+        private void OnEnable()
         {
-            RenderText();
+            TextMesh.textPreprocessor = this;
         }
 
-
-        public MarkdownRenderingSettings RenderSettings = MarkdownRenderingSettings.Default;
-
-        private void RenderText()
+        private void OnDisable()
         {
-            Markdown.RenderToTextMesh(Source, TextMesh, RenderSettings);
+            TextMesh.textPreprocessor = null;
+        }
+
+        private void OnValidate()
+        {
+            TextMesh.SetAllDirty();
+        }
+
+        public string PreprocessText(string text)
+        {
+            var result = Markdown.MarkdownToRichText(text, _renderSettings);
+            
+            if (_showDebugText)
+                DebugText = result;
+
+            return result;
         }
     }
 }
