@@ -1,9 +1,18 @@
 ﻿using System;
-using NaughtyAttributes;
 using UnityEngine;
+#if ODIN_INSPECTOR_3
+using Sirenix.OdinInspector;
+#else
+using NaughtyAttributes;
+#endif
 
 namespace LogicUI.FancyTextRendering
 {
+#if ODIN_INSPECTOR_3
+    [AttributeUsage(AttributeTargets.All)]
+    internal class AllowNestingAttribute : Attribute { }
+#endif
+
     [Serializable]
     public class MarkdownRenderingSettings
     {
@@ -33,35 +42,41 @@ namespace LogicUI.FancyTextRendering
         {
             public bool RenderMonospace = true;
 
+            private bool Condition1 => RenderMonospace && UseCustomFont;
+            private bool Condition2 => RenderMonospace && DrawOverlay;//EConditionOperator.And, nameof(RenderMonospace), nameof(DrawOverlay)
+
+            private bool Condition3 => RenderMonospace && ManuallySetCharacterSpacing;//EConditionOperator.And, nameof(RenderMonospace), nameof(ManuallySetCharacterSpacing)
+            private bool Condition4 => RenderMonospace && AddSeparationSpacing; // EConditionOperator.And, nameof(RenderMonospace), nameof(AddSeparationSpacing)
+
             [Space]
             [ShowIf(nameof(RenderMonospace)), AllowNesting]
             public bool UseCustomFont = true;
 
-            [ShowIf(EConditionOperator.And, nameof(RenderMonospace), nameof(UseCustomFont)), AllowNesting]
+            [ShowIf(nameof(Condition1)), AllowNesting]
             public string FontAssetPathRelativeToResources = "Noto/Noto Mono/NotoMono-Regular";
 
             [Space]
             [ShowIf(nameof(RenderMonospace)), AllowNesting]
             public bool DrawOverlay = true;
 
-            [ShowIf(EConditionOperator.And, nameof(RenderMonospace), nameof(DrawOverlay)), AllowNesting]
+            [ShowIf(nameof(Condition2)), AllowNesting]
             public Color OverlayColor = new Color32(0, 0, 0, 60);
 
-            [ShowIf(EConditionOperator.And, nameof(RenderMonospace), nameof(DrawOverlay)), AllowNesting]
+            [ShowIf(nameof(Condition2)), AllowNesting]
             public float OverlayPaddingPixels = 25;
 
             [Space]
             [ShowIf(nameof(RenderMonospace)), AllowNesting]
             public bool ManuallySetCharacterSpacing = false;
 
-            [ShowIf(EConditionOperator.And, nameof(RenderMonospace), nameof(ManuallySetCharacterSpacing)), AllowNesting]
+            [ShowIf(nameof(Condition3)), AllowNesting]
             public float CharacterSpacing = 0.69f;
 
             [Space]
             [ShowIf(nameof(RenderMonospace)), AllowNesting]
             public bool AddSeparationSpacing = true;
 
-            [ShowIf(EConditionOperator.And, nameof(RenderMonospace), nameof(AddSeparationSpacing)), AllowNesting]
+            [ShowIf(nameof(Condition4)), AllowNesting]
             public float SeparationSpacing = 0.3f;
         }
 
@@ -69,6 +84,8 @@ namespace LogicUI.FancyTextRendering
         public ListSettings Lists = new ListSettings();
         [Serializable] public class ListSettings
         {
+            private bool Condition1 => RenderUnorderedLists || RenderOrderedLists; //EConditionOperator.Or, nameof(RenderUnorderedLists), nameof(RenderOrderedLists)
+
             public bool RenderUnorderedLists = true;
             public bool RenderOrderedLists = true;
 
@@ -80,23 +97,25 @@ namespace LogicUI.FancyTextRendering
             public string OrderedListNumberSuffix = ".";
 
             [Space]
-            [ShowIf(EConditionOperator.Or, nameof(RenderUnorderedLists), nameof(RenderOrderedLists)), AllowNesting]
+            [ShowIf(nameof(Condition1)), AllowNesting]
             public float VerticalOffset = 0.76f;
 
-            [ShowIf(EConditionOperator.Or, nameof(RenderUnorderedLists), nameof(RenderOrderedLists)), AllowNesting]
+            [ShowIf(nameof(Condition1)), AllowNesting]
             public float BulletOffsetPixels = 100f;
 
-            [ShowIf(EConditionOperator.Or, nameof(RenderUnorderedLists), nameof(RenderOrderedLists)), AllowNesting]
+            [ShowIf(nameof(Condition1)), AllowNesting]
             public float ContentSeparationPixels = 20f;
         }
 
         public LinkSettings Links = new LinkSettings();
         [Serializable] public class LinkSettings
         {
+            private bool Condition1 => RenderLinks || RenderAutoLinks; //EConditionOperator.Or, nameof(RenderLinks), nameof(RenderAutoLinks)
+
             public bool RenderLinks = true;
             public bool RenderAutoLinks = true;
 
-            [ShowIf(EConditionOperator.Or, nameof(RenderLinks), nameof(RenderAutoLinks)), AllowNesting]
+            [ShowIf(nameof(Condition1)), AllowNesting]
             [ColorUsage(showAlpha: false)]
             public Color LinkColor = new Color32(29, 124, 234, a: byte.MaxValue);
         }
@@ -154,7 +173,8 @@ namespace LogicUI.FancyTextRendering
         {
             public bool RenderSuperscript = false;
 
-            [ShowIf(nameof(RenderSuperscript)), AllowNesting]
+            [ShowIf(nameof(RenderSuperscript))]
+            [AllowNesting]
             public bool RenderChainSuperscript = true;
         }
     }
