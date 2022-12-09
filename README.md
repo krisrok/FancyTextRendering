@@ -77,7 +77,7 @@ and the dependency:
 1. [Package](https://github.com/krisrok/FancyTextRendering/tree/feature/packaging) the codebase
 1. [Remove](https://github.com/krisrok/FancyTextRendering/tree/feature/odin-compat) NaughtyAttributes dependency and make it compatible with Odin Inspector as an alternative.
     * If you already have Odin installed, you do *not* have to install NaughtyAttributes.
-    * If you don't have Odin, just install NaughtyAttributes (see [Dependencies](https://github.com/krisrok/FancyTextRendering/edit/main/README.md#Dependencies))
+    * If you don't have Odin, just install NaughtyAttributes
 1. [Implement](https://github.com/krisrok/FancyTextRendering/tree/feature/itextpreprocessor) TextMeshPro's [ITextPreprocessor](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.ITextPreprocessor.html)
     * MarkdownRenderer just acts as an "addon" and does not need to be referenced in your code
     * You just write Markdown to [TMP_Text.text](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_Text.html#TMPro_TMP_Text_text)
