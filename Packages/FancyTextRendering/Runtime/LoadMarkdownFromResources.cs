@@ -1,5 +1,6 @@
 ﻿using JimmysUnityUtilities;
 using UnityEngine;
+using TMPro;
 #if ODIN_INSPECTOR_3
 using Sirenix.OdinInspector;
 #else
@@ -8,7 +9,7 @@ using NaughtyAttributes;
 
 namespace LogicUI.FancyTextRendering
 {
-    [RequireComponent(typeof(MarkdownRenderer))]
+    [RequireComponent(typeof(TMP_Text))]
     public class LoadMarkdownFromResources : MonoBehaviour
     {
         [SerializeField] string MarkdownResourcesPath;
@@ -22,7 +23,7 @@ namespace LogicUI.FancyTextRendering
         private void LoadMarkdown()
         {
             string markdown = ResourcesUtilities.ReadTextFromFile(MarkdownResourcesPath);
-            GetComponent<MarkdownRenderer>().Source = markdown;
+            GetComponent<TMP_Text>().SetText(markdown);
         }
     }
 }
