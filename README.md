@@ -50,8 +50,37 @@ If you have a bug report or feature request, please put it on the [issues page](
 
 ## Dependencies
 
-* [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes) is used to draw the inspectors.
+* Odin Inspector (or [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)) can be used to draw the inspectors.
 
 * [JimmysUnityUtilities](https://github.com/JimmyCushnie/JimmysUnityUtilities) is used for many things, but in particular the [StringBuilder extensions](https://github.com/JimmyCushnie/JimmysUnityUtilities/blob/master/Scripts/Extensions/Csharp%20types/StringBuilderExtensions.cs) are used extensively.
 
 Both of these libraries are pre-installed if you simply clone the project, but you will need to add them yourself if you want to use FancyTextRendering in another project.
+
+# Install package
+
+## Via Package manager
+Add from git URL:
+`https://github.com/krisrok/FancyTextRendering.git?path=/Packages/FancyTextRendering`
+
+and the dependency:
+`https://github.com/JimmyCushnie/JimmysUnityUtilities.git`
+
+## Or via manifest.json:
+```
+"dependencies": {
+  "com.jimmycushnie.fancytextrendering": "https://github.com/krisrok/FancyTextRendering.git?path=/Packages/FancyTextRendering",
+  "com.jimmycushnie.jimmysunityutilities": "https://github.com/JimmyCushnie/JimmysUnityUtilities.git",
+  ...
+```
+
+# This fork's changes
+1. [Package](https://github.com/krisrok/FancyTextRendering/tree/feature/packaging) the codebase
+1. [Remove](https://github.com/krisrok/FancyTextRendering/tree/feature/odin-compat) NaughtyAttributes dependency and make it compatible with Odin Inspector as an alternative.
+    * If you already have Odin installed, you do *not* have to install NaughtyAttributes.
+    * If you don't have Odin, just install NaughtyAttributes (see [Dependencies](https://github.com/krisrok/FancyTextRendering/edit/main/README.md#Dependencies))
+1. [Implement](https://github.com/krisrok/FancyTextRendering/tree/feature/itextpreprocessor) TextMeshPro's [ITextPreprocessor](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.ITextPreprocessor.html)
+    * MarkdownRenderer just acts as an "addon" and does not need to be referenced in your code
+    * You just write Markdown to [TMP_Text.text](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_Text.html#TMPro_TMP_Text_text)
+1. [Allow](https://github.com/krisrok/FancyTextRendering/tree/feature/leading-tags-poundsign) leading richtags before pound-sign-style headers.
+    * This way headlines' underlines match the font color :)
+    * `<color=red># My headline</color>`
