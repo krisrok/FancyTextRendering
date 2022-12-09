@@ -75,12 +75,12 @@ and the dependency:
 
 # This fork's changes
 1. [Package](https://github.com/krisrok/FancyTextRendering/tree/feature/packaging) the codebase
-1. [Remove](https://github.com/krisrok/FancyTextRendering/tree/feature/odin-compat) NaughtyAttributes dependency and make it compatible with Odin Inspector as an alternative.
-    * If you already have Odin installed, you do *not* have to install NaughtyAttributes.
+1. [Remove](https://github.com/krisrok/FancyTextRendering/tree/feature/odin-compat) NaughtyAttributes dependency and make it compatible with Odin Inspector as an alternative
+    * If you already have Odin installed, you do *not* have to install NaughtyAttributes
     * If you don't have Odin, just install NaughtyAttributes
 1. [Implement](https://github.com/krisrok/FancyTextRendering/tree/feature/itextpreprocessor) TextMeshPro's [ITextPreprocessor](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.ITextPreprocessor.html)
     * MarkdownRenderer just acts as an "addon" and does not need to be referenced in your code
     * You just write Markdown to [TMP_Text.text](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_Text.html#TMPro_TMP_Text_text)
-1. [Allow](https://github.com/krisrok/FancyTextRendering/tree/feature/leading-tags-poundsign) leading richtags before pound-sign-style headers.
+1. [Allow](https://github.com/krisrok/FancyTextRendering/tree/feature/leading-tags-poundsign) leading richtags before pound-sign-style headers
     * This way headlines' underlines match the font color :)
     * `<color=red># My headline</color>`
