@@ -343,7 +343,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860940793}
   m_HandleRect: {fileID: 1860940792}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -554,63 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb87846e43a704469d9be7ef4faa09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderSettings:
-    Bold:
-      RenderBold: 1
-    Italics:
-      RenderItalics: 1
-    Strikethrough:
-      RenderStrikethrough: 1
-    Monospace:
-      RenderMonospace: 1
-      UseCustomFont: 1
-      FontAssetPathRelativeToResources: Noto/Noto Mono/NotoMono-Regular
-      DrawOverlay: 1
-      OverlayColor: {r: 0, g: 0, b: 0, a: 0.23529412}
-      OverlayPaddingPixels: 25
-      ManuallySetCharacterSpacing: 0
-      CharacterSpacing: 0.69
-      AddSeparationSpacing: 1
-      SeparationSpacing: 0.3
-    Lists:
-      RenderUnorderedLists: 1
-      RenderOrderedLists: 1
-      UnorderedListBullet: "\u2022"
-      OrderedListNumberSuffix: .
-      VerticalOffset: 0.76
-      BulletOffsetPixels: 100
-      ContentSeparationPixels: 20
-    Links:
-      RenderLinks: 1
-      RenderAutoLinks: 1
-      LinkColor: {r: 0.11372549, g: 0.4862745, b: 0.91764706, a: 1}
-    Headers:
-      RenderPoundSignHeaders: 1
-      RenderLineHeaders: 1
-      Levels:
-      - Size: 2
-        Bold: 1
-        Underline: 1
-        Case: 0
-        VerticalSpacing: 0.45
-      - Size: 1.7
-        Bold: 1
-        Underline: 1
-        Case: 0
-        VerticalSpacing: 0.3
-      - Size: 1.5
-        Bold: 1
-        Underline: 0
-        Case: 0
-        VerticalSpacing: 0
-      - Size: 1.3
-        Bold: 1
-        Underline: 0
-        Case: 0
-        VerticalSpacing: 0
-    Superscript:
-      RenderSuperscript: 0
-      RenderChainSuperscript: 1
+  _renderSettings: {fileID: 11400000, guid: 2254035730d719d44a4777d107afa4b7, type: 2}
 --- !u!114 &411557729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,10 +575,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[dopel](popel) [mop](hhj)'
+  m_text: "# FancyTextRendering\n\nIt's some code to render markdown & clickable
+    links in Unity. How fun!\n\n## We got multiple levels of headers\n\nIsn't that
+    neat.\n\nAnywho, we've got all your standard Markdown features. You can make
+    stuff *italic* or **bold**, or even ***both simultaneously***. You can cross
+    out stuff with ~~strikethrough~~ or make it codey with `monospace`.\n\n### Lists!\n\nBoy
+    oh boy do we have lists!\n\n* Unordered lists that use bullet points!\n* See,
+    it's another item in the list!\n* Wowee, another one!!!\n\nOrdered lists are
+    also supported :D\n\n1. If you use \"1\" for every number, the list is auto-numbered,
+    in keeping with standard markdown rules.\n1. This makes it easy to insert an
+    item in the list without having to update the number for every single item in
+    the list.\n1. But if you want to control the numbers manually, that is also supported.\n\nSee,
+    like in this list:\n\n69. This is an intentional difference from the markdown
+    spec.\n420. I often see folks get confused by Markdown's list auto-numbering,
+    and this change should ensure that the feature only applies to folks who know
+    what they're doing.\n\n### Links!\n\nHTTP and HTTPS links are automatically detected
+    and added, like so: http://isitwednesday.info/. We also have inline links, [like
+    this](https://www.youtube.com/watch?v=dQw4w9WgXcQ).\n\n### Superscript!\n\nWe
+    got super^script! We got super^(script but it's long!)\n\n### Escapes!\n\nYou
+    can \\*escape* control characters with a backslash. Regular\\^script!\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
+  m_sharedMaterial: {fileID: 6588039389402685758, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -882,8 +844,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
+  m_sharedMaterial: {fileID: 6588039389402685758, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1294,7 +1256,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1248535717}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.95490164
+  m_Size: 0.8594387
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1506,8 +1468,8 @@ MonoBehaviour:
     got super^script! We got super^(script but it's long!)\n\n### Escapes!\n\nYou
     can \\*escape* control characters with a backslash. Regular\\^script!\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
+  m_sharedMaterial: {fileID: 6588039389402685758, guid: a38843dbb13c23940ae5adfe0936b68e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
