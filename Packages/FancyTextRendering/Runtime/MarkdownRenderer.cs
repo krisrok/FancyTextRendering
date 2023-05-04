@@ -1,4 +1,4 @@
-﻿#if ODIN_INSPECTOR_3
+﻿#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #else
 using NaughtyAttributes;
@@ -24,7 +24,7 @@ namespace LogicUI.FancyTextRendering
 
         private bool _showDebugText;
 
-#if ODIN_INSPECTOR_3
+#if ODIN_INSPECTOR
         [NonSerialized, ShowInInspector] // NaughtyAttributes-compat requires serialized field, so we keep it public and set NonSerialized
 #endif
         [ShowIf(nameof(_showDebugText))]

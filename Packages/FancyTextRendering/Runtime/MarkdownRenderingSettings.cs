@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-#if ODIN_INSPECTOR_3
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #else
 using NaughtyAttributes;
@@ -8,7 +8,7 @@ using NaughtyAttributes;
 
 namespace LogicUI.FancyTextRendering
 {
-#if ODIN_INSPECTOR_3
+#if ODIN_INSPECTOR
     [AttributeUsage(AttributeTargets.All)]
     internal class AllowNestingAttribute : Attribute { }
 #endif

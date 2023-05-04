@@ -1,7 +1,7 @@
 ﻿using JimmysUnityUtilities;
 using UnityEngine;
 using TMPro;
-#if ODIN_INSPECTOR_3
+#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #else
 using NaughtyAttributes;
