@@ -1,10 +1,10 @@
 {
   "name": "com.jimmycushnie.fancytextrendering",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "FancyTextRendering",
-  "description": "Render markdown & clickable links with TextMeshPro in Unity",
+  "description": "Render markdown & clickable links with TextMeshPro in Unity. Original repo by JimmyCushnie, modified by krisrok",
   "unity": "2019.1",
-  "documentationUrl": "https://github.com/JimmyCushnie/FancyTextRendering",
+  "documentationUrl": "https://github.com/krisrok/FancyTextRendering",
   "dependencies": { },
    "samples": [
         {
