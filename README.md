@@ -84,3 +84,6 @@ and the dependency:
 1. [Allow](https://github.com/krisrok/FancyTextRendering/tree/feature/leading-tags-poundsign) leading richtags before pound-sign-style headers
     * This way headlines' underlines match the font color :)
     * `<color=red># My headline</color>`
+1. Convert settings to [ScriptableObject](https://github.com/krisrok/FancyTextRendering/commit/69faef794800bf526e95c1ff10ad356408e400fa)
+    * Enables to re-use the same settings on many textfields
+    * Enables persistent changes to settings during runtime
