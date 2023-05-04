@@ -19,19 +19,30 @@ namespace LogicUI.FancyTextRendering
     {
         public static MarkdownRenderingSettings Default => new MarkdownRenderingSettings();
 
-
+#if ODIN_INSPECTOR
+        [InlineProperty]
+        [HideLabel]
+#endif
         public BoldSettings Bold = new BoldSettings();
         [Serializable] public class BoldSettings
         {
             public bool RenderBold = true;
         }
 
+#if ODIN_INSPECTOR
+        [InlineProperty]
+        [HideLabel]
+#endif
         public ItalicSettings Italics = new ItalicSettings();
         [Serializable] public class ItalicSettings
         {
             public bool RenderItalics = true;
         }
 
+#if ODIN_INSPECTOR
+        [InlineProperty]
+        [HideLabel]
+#endif
         public StrikethroughSettings Strikethrough = new StrikethroughSettings();
         [Serializable] public class StrikethroughSettings
         {
