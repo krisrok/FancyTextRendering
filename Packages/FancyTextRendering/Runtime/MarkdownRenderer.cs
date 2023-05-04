@@ -66,6 +66,14 @@ namespace LogicUI.FancyTextRendering
         private void OnValidate()
         {
             TextMesh.SetAllDirty();
+
+#if UNITY_EDITOR
+            if (Application.isPlaying == true)
+                return;
+
+            TextMesh.ForceMeshUpdate();
+            UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+#endif
         }
 
         public string PreprocessText(string text)
