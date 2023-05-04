@@ -44,6 +44,12 @@ namespace LogicUI.FancyTextRendering
             }
         }
 
+#if ODIN_INSPECTOR
+        [InlineEditor]
+        [OnValueChanged(nameof(OnValidate), IncludeChildren = true)]
+#else
+        [Expandable]
+#endif
         [SerializeField]
         private MarkdownRenderingSettings _renderSettings;
 

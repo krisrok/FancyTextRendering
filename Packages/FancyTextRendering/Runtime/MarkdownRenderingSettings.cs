@@ -14,7 +14,8 @@ namespace LogicUI.FancyTextRendering
 #endif
 
     [Serializable]
-    public class MarkdownRenderingSettings
+    [CreateAssetMenu]
+    public class MarkdownRenderingSettings : ScriptableObject
     {
         public static MarkdownRenderingSettings Default => new MarkdownRenderingSettings();
 
